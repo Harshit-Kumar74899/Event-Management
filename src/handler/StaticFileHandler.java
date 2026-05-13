@@ -6,6 +6,8 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.io.FileInputStream;
+
 public class StaticFileHandler implements HttpHandler {
 
     private final String root;
@@ -24,8 +26,7 @@ public class StaticFileHandler implements HttpHandler {
         }
 
         // 🔥 Load from classpath
-        InputStream is =
-                getClass().getResourceAsStream("/" + root + path);
+        InputStream is = new FileInputStream(root + path);
 
         if (is == null) {
             exchange.sendResponseHeaders(404, -1);
