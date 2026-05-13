@@ -6,7 +6,7 @@ COPY . .
 
 RUN mkdir -p out
 
-RUN javac -cp "lib/*" -d out src/*.java
+RUN find src -name "*.java" > sources.txt && javac -cp "lib/*" -d out @sources.txt
 
 EXPOSE 8080
 
