@@ -26,7 +26,9 @@ public class StaticFileHandler implements HttpHandler {
         }
 
         // 🔥 Load from classpath
-        InputStream is = new FileInputStream(root + path);
+        InputStream is = new FileInputStream(
+    System.getProperty("user.dir") + "/web" + path
+);
 
         if (is == null) {
             exchange.sendResponseHeaders(404, -1);
