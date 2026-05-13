@@ -22,8 +22,8 @@ public class MainServer {
 );
 
             HttpServer server = HttpServer.create(
-                    new InetSocketAddress(port), 0
-            );
+    new InetSocketAddress("0.0.0.0", port), 0
+);
 
             // 🔹 STATIC FILE HANDLER (HTML, CSS, JS)
             server.createContext("/", new StaticFileHandler("web"));
