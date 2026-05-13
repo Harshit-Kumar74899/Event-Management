@@ -4,7 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN mkdir out
-RUN javac -cp "lib/*" -d out src/**/*.java src/*.java
+RUN mkdir -p out
+
+RUN javac -cp "lib/*" -d out src/*.java
+
+EXPOSE 8080
 
 CMD ["sh", "-c", "java -cp out:lib/* MainServer"]
