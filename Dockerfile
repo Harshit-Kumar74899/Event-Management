@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN cp -r web out/web || true
+RUN mkdir -p out/web
 
-RUN mkdir -p out
+RUN cp -r web/* out/web/
 
 RUN find src -name "*.java" > sources.txt && javac -cp "lib/*" -d out @sources.txt
 
