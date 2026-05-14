@@ -1,15 +1,12 @@
-FROM eclipse-temurin:17
+FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
 COPY . .
 
-RUN mkdir -p out/web
+RUN mkdir out
+RUN javac -cp "lib/*" -d out src/**/*.java src/*.java
 
-RUN cp -r web/* out/web/
-
-RUN find src -name "*.java" > sources.txt && javac -cp "lib/*" -d out @sources.txt
-
-EXPOSE 8080
+EXPOSE 10000
 
 CMD ["sh", "-c", "java -cp out:lib/* MainServer"]
